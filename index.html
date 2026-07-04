@@ -1,444 +1,924 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CEH Portfolio — Wongel Sherpa</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEH Portfolio — Wongel Sherpa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
 
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root {
- 
-  --bg-main:       #050505;
-  --bg-surface:    #0a0f0d;
-  --bg-card:       #111614; 
-  
-  --accent-primary:#ff2200; 
-  --accent-dim:    #00441b;
-  --accent-glow:   rgba(0, 255, 102, 0.15); 
-  
-  --status-critical:#ff3333; 
-  --status-warning: #ffaa00; 
-  --status-success: #00ff66;
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
- 
-  --text-main:     #e0ffe8;
-  --text-muted:    #70957d; 
-  --text-dim:      #1f3427; 
+    :root {
 
-  --border-sharp:  #00ff66;
-  --border-muted:  #1a3324; }
+      --bg-main: #050505;
+      --bg-surface: #0a0f0d;
+      --bg-card: #111614;
 
-html{scroll-behavior:smooth}
+      --accent-primary: #ff2200;
+      --accent-dim: #00441b;
+      --accent-glow: rgba(0, 255, 102, 0.15);
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  font-size:16px;
-  line-height:1.6;
-  overflow-x:hidden;
-  background-color: #050505;
-}
-
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  pointer-events:none;z-index:999;
-  background:repeating-linear-gradient(
-    0deg,
-    transparent,transparent 2px,
-    rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px
-  );
-}
-
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:1rem 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(8,12,16,0.9);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-  background-color: #70957d;
-  color:#f3f4f3;
-}
-.s-title{color:#f7f9f8;}
-.nav-logo{
-  font-family:'Share Tech Mono',monospace;
-  font-size:1.1rem;color:var(--green);
-  text-decoration:none;letter-spacing:0.05em;
-}
-.nav-logo span{color:var(--text);opacity:0.5}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{
-  color:var(--muted);text-decoration:none;
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.8rem;letter-spacing:0.08em;
-  transition:color 0.2s;
-}
-.nav-links a:hover{color:var(--green)}
-.nav-status{
-  display:flex;align-items:center;gap:0.5rem;
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.75rem;color:var(--muted);
-}
-.status-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 6px var(--green);
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+      --status-critical: #ff3333;
+      --status-warning: #ffaa00;
+      --status-success: #00ff66;
 
 
-#hero{
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  padding:6rem 2.5rem 3rem;
-  position:relative;
-  background-color: #050505;
-  
-}
-.hero-glow{
-  position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 50% 60% at 50% 50%, rgba(0,255,65,0.04) 0%, transparent 70%);
-}
-.terminal{
-  width:100%;max-width:780px;
-  background:#060A08;
-  border:1px solid var(--border);
-  border-radius:6px;
-  box-shadow:0 0 60px rgba(0,255,65,0.08), 0 0 120px rgba(0,255,65,0.04);
-  overflow:hidden;
-  position:relative;z-index:1;
-}
-.terminal-bar{
-  background:#0D1810;
-  padding:0.65rem 1rem;
-  display:flex;align-items:center;gap:0.5rem;
-  border-bottom:1px solid var(--border);
-}
-.t-btn{width:11px;height:11px;border-radius:50%}
-.t-red{background:#FF5F56}.t-yellow{background:#FFBD2E}.t-green{background:#27C93F}
-.t-title{
-  flex:1;text-align:center;
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.75rem;color:rgb(243, 247, 243);letter-spacing:0.1em;
+      --text-main: #e0ffe8;
+      --text-muted: #70957d;
+      --text-dim: #1f3427;
 
-}
-.terminal-body{
-  padding:1.75rem 2rem 2rem;
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.9rem;line-height:1.9;
-  min-height:320px;
+      --border-sharp: #00ff66;
+      --border-muted: #1a3324;
+    }
 
-}
-.t-line{display:flex;gap:0.6rem;align-items:baseline}
-.t-prompt{color:var(--green);flex-shrink:0;
-color:red;}
-.t-cmd{color:#A0C8A8}
-.t-output{color:var(--text);padding-left:1.2rem;opacity:0
-}
-.t-output.show{opacity:1;
-color:yellow;}
-.t-output.green{color:var(--green);color:yellow;}
-.t-output.dim{color:var(--muted); color:whitesmoke;}
-.t-cursor-line{display:flex;gap:0.6rem;align-items:baseline;margin-top:0.25rem}
-.t-cursor{
-  display:inline-block;width:9px;height:1.1em;
-  background:var(--green);vertical-align:middle;
-  animation:blink 1s step-end infinite;
-}
-@keyframes blink{50%{opacity:0}}
-.hero-below{
-  text-align:center;margin-top:2.5rem;position:relative;z-index:1;
-}
-.hero-below p{color:var(--muted);font-size:0.85rem;margin-bottom:1.25rem;letter-spacing:0.05em;
-color:#A0C8A8}
-.btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  padding:0.7rem 1.6rem;border-radius:3px;
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.85rem;letter-spacing:0.05em;
-  cursor:pointer;text-decoration:none;border:none;
-  transition:all 0.2s;
-  color:rgb(217, 248, 208);
-}
-.btn-primary{
-  background:var(--green);color:#b1eccf;font-weight:700;
-  box-shadow:0 0 20px rgba(3, 254, 66, 0.3);
-}
-.btn-primary:hover{background:var(--green2);box-shadow:0 0 32px rgba(0,255,65,0.5)}
-.btn-outline{
-  background:transparent;color:var(--green);
-  border:1px solid var(--border);
-  box-shadow:0 0 15px #013208;
-  color:#ccf1d3
+    html {
+      scroll-behavior: smooth
+    }
 
-}
-.btn-outline:hover{border-color:var(--green);background:rgba(0,255,65,0.05)}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: #050505;
+    }
 
-#hero,#certification,#skill,#probession,#contact,#gallary{padding:5.5rem 2.5rem;border-top:1px solid var(--dim);
-background-color:rgba(2, 43, 2, 0.021);}
-.div-inner{max-width:960px;margin:0 auto;
-  display: flex;
-  flex-direction: column;
-  gap:20px;
-   color:#f0f2f1 ;
- 
-  gap:50px;}
-.d-label{
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.72rem;letter-spacing:0.18em;color:var(--green);
-  text-transform:uppercase;margin-bottom:0.6rem;
-  display:flex;align-items:center;gap:0.6rem;
-  color:#f1f5f3
-}
-.d-label::before{content:'//';opacity:0.5;color:rgb(239, 245, 239)}
-.d-title{
-  font-family:'Share Tech Mono',monospace;
-  font-size:clamp(1.5rem,3.5vw,2.2rem);
-  letter-spacing:-0.01em;color:var(--text);
-  margin-bottom:2.75rem;line-height:1.2;
-  color:#f4f9f6
-  
-}
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      background: repeating-linear-gradient(0deg,
+          transparent, transparent 2px,
+          rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+    }
+    a{
+      color: white;
+      text-decoration: none;
+      
+    }
+    a:hover{
+      color: red;
+      transition: transform 0.5s ease-in;
+    }
 
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.cert-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:4px;padding:1.5rem;
-  display:flex;
-  flex-direction: column;
-  gap:2 rem;
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(8, 12, 16, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      background-color: #70957d;
+      color: #f3f4f3;
+    }
 
-  transition:border-color 0.2s,box-shadow 0.2s;
-  position:relative;overflow:hidden;
-  box-shadow: #02f262;
-  background-color: rgb(30, 35, 34);
-  
-}
-.cert-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--green),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.cert-card:hover{border-color:var(--green);box-shadow:0 0 24px rgb(3, 255, 66)}
-.cert-card:hover::before{opacity:1}
-.cert-badge{
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.7rem;letter-spacing:0.15em;
-  color:var(--green);background:rgba(0,255,65,0.08);
-  border:1px solid rgba(0,255,65,0.2);
-  padding:0.2rem 0.6rem;border-radius:2px;
-  display:inline-block;width:fit-content;
-}
-.cert-card h3{
-  font-family:'Share Tech Mono',monospace;
-  font-size:1rem;color:var(--text);
-  box-shadow: #04a243;
-}
-.cert-card p{color:var(--muted);font-size:0.85rem;line-height:1.6}
-.cert-issuer{
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.72rem;color:var(--muted);
-  margin-top:auto;padding-top:0.75rem;
-  border-top:1px solid var(--dim);
-}
-.cert-issuer span{color:var(--green)}
+    .s-title {
+      color: #f7f9f8;
+    }
 
-.skills-cols{display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:2rem}
-.skill-group h3{
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.8rem;letter-spacing:0.12em;color:var(--green);
-  margin-bottom:1rem;text-transform:uppercase;
-  background-color:rgb(43, 68, 57);
-}
-.skill-bar-item{margin-bottom:0.85rem}
-.skill-bar-label{
-  display:flex;justify-content:space-between;
-  font-size:0.82rem;margin-bottom:0.35rem;
-}
-.skill-bar-label span:first-child{color:var(--text)}
-.skill-bar-label span:last-child{color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:0.75rem}
-.skill-track{
-  height:3px;background:var(--dim);border-radius:1px;overflow:hidden;
-}
-.skill-fill{
-  height:100%;border-radius:1px;
-  background:linear-gradient(90deg,var(--green2),var(--green));
-  width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);
-  box-shadow:0 0 8px rgba(0,255,65,0.4);
-}
+    .nav-logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span {
+      color: var(--text);
+      opacity: 0.5
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green)
+    }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
 
 
-.probession-list{display:flex;flex-direction:column;gap:1.25rem;color: #f0f3f1;}
-.prob-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:4px;padding:1.5rem 2rem;
-  display:grid;grid-template-columns:1fr auto;gap:1rem;
-  align-items:center;
-  transition:border-color 0.2s;cursor:default;
-  color:#f3f5f4;
-  background-color: #0c1d16d9;
-  box-shadow: #08f064;
-}
-.prob-card:hover{border-color:var(--green)}
-.prob-left h3{
-  font-family:'Share Tech Mono',monospace;
-  font-size:1rem;color:var(--text);margin-bottom:0.4rem;
-  color:#e6ede9
-}
-.prob-left p{color:var(--muted);font-size:0.875rem;line-height:1.65;color:rgb(241, 244, 241);}
-.prob-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem;color:#f6f8f6}
-.ptag{
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.68rem;padding:0.15rem 0.55rem;
-  border-radius:2px;
-  background:rgba(0,255,65,0.07);
-  color:var(--green);border:1px solid rgba(0,255,65,0.15);
-  letter-spacing:0.05em;
-  color: #fcfcfc;
-}
-.prob-right{
-  display:flex;flex-direction:column;align-items:flex-end;gap:0.4rem;
-  flex-shrink:0;
-}
-.prob-status{
-  font-family:'Share Tech Mono',monospace;font-size:0.7rem;
-  padding:0.2rem 0.6rem;border-radius:2px;
-  display:flex;align-items:center;gap:0.4rem;
-}
-.prob-status.live{background:rgba(0,255,65,0.1);color:var(--green);border:1px solid rgba(0,255,65,0.2)}
-.prob-status.private{background:rgba(255,100,0,0.08);color:#FF8C42;border:1px solid rgba(255,140,66,0.2)}
-.prob-status .sd{width:5px;height:5px;border-radius:50%;background:currentColor}
+    @keyframes pulse {
 
-.s-label{color:#f9fffc;}
-#contact{text-align:left}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.contact-text p{color:var(--muted);font-size:0.95rem;line-height:1.85;margin-bottom:1.5rem;color:#eff4f1}
-.contact-info{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;color: #fbfefc;}
-.contact-row{
-  display:flex;align-items:center;gap:1rem;
-  font-family:'Share Tech Mono',monospace;font-size:0.82rem;
-}
-.c-key{color:var(--muted);width:80px;flex-shrink:0}
-.c-val{color:var(--green)}
-.contact-form{display:flex;flex-direction:column;gap:1rem}
-.form-group{display:flex;flex-direction:column;gap:0.4rem}
-.form-group label{
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.72rem;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;
-}
-.form-group input,.form-group textarea{
-  background:#060A08;border:1px solid var(--border);
-  border-radius:3px;padding:0.7rem 0.9rem;
-  color:var(--text);font-family:'Inter',sans-serif;font-size:0.9rem;
-  outline:none;transition:border-color 0.2s;resize:vertical;
-}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--green)}
-.form-group textarea{min-height:100px}
+      0%,
+      100% {
+        opacity: 1
+      }
 
-footer{ background-color: #70957d;
-  text-align:center;padding:1.75rem;
-  border-top:1px solid var(--dim);
-  font-family:'Share Tech Mono',monospace;
-  font-size:0.75rem;color:var(--muted);
-  color:#e7e9e8
-}
+      50% {
+        opacity: 0.4
+      }
+    }
 
 
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease}
-.fade-in.visible{opacity:1;transform:none}
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2.5rem 3rem;
+      position: relative;
+      background-color: #050505;
 
-@media(max-width:768px){
-  nav{padding:0.9rem 1.25rem}
-  .nav-links{gap:1rem}
-  .nav-status{display:none}
-  #hero,#certification,#skill,#project,#contact{padding:3.5rem 1.25rem;}
-  #hero{padding:5.5rem 1.25rem 2.5rem}
-  .terminal-body{padding:1.25rem 1.25rem 1.5rem;font-size:0.82rem}
-  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
-  .proj-card{grid-template-columns:1fr}
-  .proj-right{flex-direction:row;align-items:center}
-}
-@media(prefers-reduced-motion:reduce){
-  .fade-in{opacity:1;transform:none}
-  .t-cursor,.status-dot{animation:none}
-  .skill-fill{transition:none}
-}
-</style>
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(0, 255, 65, 0.04) 0%, transparent 70%);
+    }
+
+    .gallery-middile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+
+
+    .gallery-middile img {
+      width: 300px;
+      height: 350px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-middile img:hover {
+      transform: scale(1.05);
+    }
+
+    .terminal {
+      width: 100%;
+      max-width: 780px;
+      background: #060A08;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 0 60px rgba(0, 255, 65, 0.08), 0 0 120px rgba(0, 255, 65, 0.04);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .terminal-bar {
+      background: #0D1810;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .t-btn {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%
+    }
+
+    .t-red {
+      background: #FF5F56
+    }
+
+    .t-yellow {
+      background: #FFBD2E
+    }
+
+    .t-green {
+      background: #27C93F
+    }
+
+    .t-title {
+      flex: 1;
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: rgb(243, 247, 243);
+      letter-spacing: 0.1em;
+
+    }
+
+    .terminal-body {
+      padding: 1.75rem 2rem 2rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.9;
+      min-height: 320px;
+
+    }
+
+    .t-line {
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline
+    }
+
+    .t-prompt {
+      color: var(--green);
+      flex-shrink: 0;
+      color: red;
+    }
+
+    .t-cmd {
+      color: #A0C8A8
+    }
+
+    .t-output {
+      color: var(--text);
+      padding-left: 1.2rem;
+      opacity: 0
+    }
+
+    .t-output.show {
+      opacity: 1;
+      color: yellow;
+    }
+
+    .t-output.green {
+      color: var(--green);
+      color: yellow;
+    }
+
+    .t-output.dim {
+      color: var(--muted);
+      color: whitesmoke;
+    }
+
+    .t-cursor-line {
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline;
+      margin-top: 0.25rem
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 9px;
+      height: 1.1em;
+      background: var(--green);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    .hero-below {
+      text-align: center;
+      margin-top: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-below p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.05em;
+      color: #A0C8A8
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 3px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s;
+      color: rgb(217, 248, 208);
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #b1eccf;
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(3, 254, 66, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--green2);
+      box-shadow: 0 0 32px rgba(0, 255, 65, 0.5)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--green);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 15px #013208;
+      color: #ccf1d3
+    }
+
+    .btn-outline:hover {
+      border-color: var(--green);
+      background: rgba(0, 255, 65, 0.05)
+    }
+
+    #hero,
+    #certification,
+    #skill,
+    #probession,
+    #contact,
+    #gallary {
+      padding: 5.5rem 2.5rem;
+      border-top: 1px solid var(--dim);
+      background-color: rgba(2, 43, 2, 0.021);
+    }
+
+    .div-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      color: #f0f2f1;
+
+      gap: 50px;
+    }
+
+    .d-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #f1f5f3
+    }
+
+    .d-label::before {
+      content: '//';
+      opacity: 0.5;
+      color: rgb(239, 245, 239)
+    }
+
+    .d-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 2.75rem;
+      line-height: 1.2;
+      color: #f4f9f6
+    }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem
+    }
+
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2 rem;
+
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: #02f262;
+      background-color: rgb(30, 35, 34);
+
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 0 24px rgb(3, 255, 66)
+    }
+
+    .cert-card:hover::before {
+      opacity: 1
+    }
+
+    .cert-badge {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      background: rgba(0, 255, 65, 0.08);
+      border: 1px solid rgba(0, 255, 65, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .cert-card h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--text);
+      box-shadow: #04a243;
+    }
+
+    .cert-card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6
+    }
+
+    .cert-issuer {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--dim);
+    }
+
+    .cert-issuer span {
+      color: var(--green)
+    }
+
+    .skills-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem
+    }
+
+    .skill-group h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      background-color: rgb(43, 68, 57);
+    }
+
+    .skill-bar-item {
+      margin-bottom: 0.85rem
+    }
+
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .skill-bar-label span:first-child {
+      color: var(--text)
+    }
+
+    .skill-bar-label span:last-child {
+      color: var(--muted);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem
+    }
+
+    .skill-track {
+      height: 3px;
+      background: var(--dim);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 1px;
+      background: linear-gradient(90deg, var(--green2), var(--green));
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    }
+
+
+    .probession-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      color: #f0f3f1;
+    }
+
+    .prob-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      transition: border-color 0.2s;
+      cursor: default;
+      color: #f3f5f4;
+      background-color: #0c1d16d9;
+      box-shadow: #08f064;
+    }
+
+    .prob-card:hover {
+      border-color: var(--green)
+    }
+
+    .prob-left h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      color: #e6ede9
+    }
+
+    .prob-left p {
+      color: var(--muted);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgb(241, 244, 241);
+    }
+
+    .prob-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      color: #f6f8f6
+    }
+
+    .ptag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 2px;
+      background: rgba(0, 255, 65, 0.07);
+      color: var(--green);
+      border: 1px solid rgba(0, 255, 65, 0.15);
+      letter-spacing: 0.05em;
+      color: #fcfcfc;
+    }
+
+    .prob-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .prob-status {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .prob-status.live {
+      background: rgba(0, 255, 65, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(0, 255, 65, 0.2)
+    }
+
+    .prob-status.private {
+      background: rgba(255, 100, 0, 0.08);
+      color: #FF8C42;
+      border: 1px solid rgba(255, 140, 66, 0.2)
+    }
+
+    .prob-status .sd {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor
+    }
+
+    .s-label {
+      color: #f9fffc;
+    }
+
+    #contact {
+      text-align: left
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start
+    }
+
+    .contact-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      color: #eff4f1
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      color: #fbfefc;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    .c-key {
+      color: var(--muted);
+      width: 80px;
+      flex-shrink: 0
+    }
+
+    .c-val {
+      color: var(--green)
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem
+    }
+
+    .form-group label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: #060A08;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.7rem 0.9rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--green)
+    }
+
+    .form-group textarea {
+      min-height: 100px
+    }
+
+    footer {
+      background-color: #70957d;
+      text-align: center;
+      padding: 1.75rem;
+      border-top: 1px solid var(--dim);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      color: #e7e9e8
+    }
+
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:768px) {
+      nav {
+        padding: 0.9rem 1.25rem
+      }
+
+      .nav-links {
+        gap: 1rem
+      }
+
+      .nav-status {
+        display: none
+      }
+
+      #hero,
+      #certification,
+      #skill,
+      #project,
+      #contact {
+        padding: 3.5rem 1.25rem;
+      }
+
+      #hero {
+        padding: 5.5rem 1.25rem 2.5rem
+      }
+
+      .terminal-body {
+        padding: 1.25rem 1.25rem 1.5rem;
+        font-size: 0.82rem
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem
+      }
+
+      .proj-card {
+        grid-template-columns: 1fr
+      }
+
+      .proj-right {
+        flex-direction: row;
+        align-items: center
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .fade-in {
+        opacity: 1;
+        transform: none
+      }
+
+      .t-cursor,
+      .status-dot {
+        animation: none
+      }
+
+      .skill-fill {
+        transition: none
+      }
+    }
+  </style>
 
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-logo" href="#hero">Wongel<span>@</span>sec<span>:~$</span></a>
-  <ul class="nav-links">
-    <li><a href="#certifications">certs</a></li>
-    <li><a href="#skills">skills</a></li>
-    <li><a href="#probession">labs</a></li>
+  <nav>
+    <a class="nav-logo" href="#hero">Wongel<span>@</span>sec<span>:~$</span></a>
+    <ul class="nav-links">
+      <li><a href="#certifications">certs</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#probession">labs</a></li>
       <li><a href="#gallary">gallery</a></li>
-    <li><a href="#contact">contact</a></li>
-  
-  </ul>
-  <div class="nav-status"><div class="status-dot"></div>open to work</div>
-</nav>
+      <li><a href="#contact">contact</a></li>
 
-
-<div id="hero">
-  <div class="hero-glow"></div>
-  <div style="width:100%;max-width:780px;position:relative;z-index:1">
-    <div class="terminal">
-      <div class="terminal-bar">
-        <div class="t-btn t-red"></div>
-        <div class="t-btn t-yellow"></div>
-        <div class="t-btn t-green"></div>
-        <div class="t-title">bash — Wongel@kali: ~/whoami</div>
-      </div>
-      <div class="terminal-body" id="terminal-body">
-        
-      </div>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>open to work
     </div>
-    <div class="hero-below">
-      <p>// certified ethical hacker · penetration tester · security researcher</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="#projects">View Labs ↓</a>
-        <a class="btn btn-outline" href="#contact">Hire Me</a>
+  </nav>
+
+
+  <div id="hero">
+    <div class="hero-glow"></div>
+    <div style="width:100%;max-width:780px;position:relative;z-index:1">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="t-btn t-red"></div>
+          <div class="t-btn t-yellow"></div>
+          <div class="t-btn t-green"></div>
+          <div class="t-title">bash — Wongel@kali: ~/whoami</div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+
+        </div>
+      </div>
+      <div class="hero-below">
+        <p>// certified ethical hacker · penetration tester · security researcher</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#projects">View Labs ↓</a>
+          <a class="btn btn-outline" href="#contact">Hire Me</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div id="certifications">
-  <div class="div-inner">
-    <div class="d-label"><b>CREDENTIALS</b></div>
-    <h2 class="d-title">Certifications</h2>
-    <div class="certs-grid">
-      <div class="cert-card fade-in">
-        <span class="cert-badge">CEH v13</span>
-        <h3>Certified Ethical Hacker</h3>
-        <p>Industry-standard certification covering 20 attack domains — from recon and scanning to malware analysis and social engineering.</p>
-        <div class="cert-issuer">Issued by <span>EC-Council</span> · 2024</div>
+  <div id="certifications">
+    <div class="div-inner">
+      <div class="d-label"><b>CREDENTIALS</b></div>
+      <h2 class="d-title">Certifications</h2>
+      <div class="certs-grid">
+        <div class="cert-card fade-in">
+          <span class="cert-badge">CEH v13</span>
+          <h3>Certified Ethical Hacker</h3>
+          <p>Industry-standard certification covering 20 attack domains — from recon and scanning to malware analysis
+            and social engineering.</p>
+          <div class="cert-issuer">Issued by <span>EC-Council</span> · 2024</div>
+        </div>
       </div>
-    </div>
-    
- <div class="cert-card fade-in">
+
+      <div class="cert-card fade-in">
         <span class="cert-badge">TryHackMe</span><br>
         <h3>Top 35% — TryHackMe</h3><br>
-        <p>12+ rooms completed across web exploitation, OSINT, Active Directory, and reverse engineering paths.soc level 2 intermediate</p><br>
+        <p>12+ rooms completed across web exploitation, OSINT, Active Directory, and reverse engineering paths.soc level
+          2 intermediate</p><br>
         <div class="cert-issuer">Platform ranking <span>#top 35%</span> global</div>
       </div>
-<div class="cert-card fade-in">
+      <div class="cert-card fade-in">
         <span class="cert-badge">Cloud WEB Cloud</span><br>
         <h3>CTF- CAPTURE THE FLAGE</h3><br>
-        <p>The CTF (Capture The Flag) conducted by Cloud Web Nepal was a cybersecurity competition that helped participants develop ethical hacking, problem-solving, and teamwork skills by solving practical security challenges.</p><br>
+        <p>The CTF (Capture The Flag) conducted by Cloud Web Nepal was a cybersecurity competition that helped
+          participants develop ethical hacking, problem-solving, and teamwork skills by solving practical security
+          challenges.</p><br>
         <div class="cert-issuer">Cloud Web Nepal<span>2</span> </div>
       </div>
       <div class="cert-card fade-in">
@@ -447,174 +927,260 @@ footer{ background-color: #70957d;
         <p>Certified Ethical Hacking Training Program had conducted by Denphlink company</p><br>
         <div class="cert-issuer">Cloud Web Nepal<span>2</span> </div>
       </div>
-    
-    </div>
-    </div>
 
-
-<div id="skills">
-  <div class="div-inner">
-    <div class="d-label"><b>ARSENAL</b></div>
-    <h2 class="d-title">Skills & Techniques</h2>
-    <div class="skills-cols fade-in">
-      <div class="skill-group">
-        <h3>Offensive</h3>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Network Penetration Testing</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Web App Exploitation</span></div><div class="skill-track"><div class="skill-fill" data-w="85"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Social Engineering</span></div><div class="skill-track"><div class="skill-fill" data-w="80"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Malware Analysis</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Wireless Attacks</span></div><div class="skill-track"><div class="skill-fill" data-w="75"></div></div></div>
-      </div>
-      <div class="skill-group">
-        <h3>Tools & Platforms</h3>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Kali Linux /Ubuntu OS/ Parrot OS</span></div><div class="skill-track"><div class="skill-fill" data-w="95"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Metasploit Framework</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Burp Suite</span></div><div class="skill-track"><div class="skill-fill" data-w="85"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Nmap / Wireshark</span></div><div class="skill-track"><div class="skill-fill" data-w="92"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Python / Bash scripting</span></div><div class="skill-track"><div class="skill-fill" data-w="78"></div></div></div>
-      </div>
-      <div class="skill-group">
-        <h3>Knowledge Areas</h3>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>OWASP Top 10</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Active Directory</span></div><div class="skill-track"><div class="skill-fill" data-w="72"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>OSINT & Recon</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
-        <div class="skill-bar-item"><div class="skill-bar-label"><span>Cryptography</span></div><div class="skill-track"><div class="skill-fill" data-w="68"></div></div></div>
-       </div>
     </div>
   </div>
-</div>
 
-<div id="probession">
-  <div class="section-inner">
-    <div class="s-label"> //<b>LAB & REASEARCH</b> </div>
+
+  <div id="skills">
+    <div class="div-inner">
+      <div class="d-label"><b>ARSENAL</b></div>
+      <h2 class="d-title">Skills & Techniques</h2>
+      <div class="skills-cols fade-in">
+        <div class="skill-group">
+          <h3>Offensive</h3>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Network Penetration Testing</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Web App Exploitation</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Social Engineering</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="80"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Malware Analysis</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="70"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Wireless Attacks</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="75"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools & Platforms</h3>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Kali Linux /Ubuntu OS/ Parrot OS</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="95"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Metasploit Framework</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="88"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Burp Suite</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Nmap / Wireshark</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="92"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Python / Bash scripting</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="78"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Knowledge Areas</h3>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>OWASP Top 10</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Active Directory</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="72"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>OSINT & Recon</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="88"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Cryptography</span></div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="68"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="probession">
+    <div class="section-inner">
+      <div class="s-label"> //<b>LAB & REASEARCH</b> </div>
       <h2 class="s-title"><b>PROBESSSION</b></h2>
-    <div class="prob-list">
+      <div class="prob-list">
 
-      <div class="prob-card fade-in">
-        <div class="prob-left">
-  <h3>SERVER MANAGEMENT</h3>
-  <p> Had helped Server development during internship at Rural Reconstruction Nepal.</p></div></div></div>
-  <div class="prob-list">
-
-      <div class="prob-card fade-in">
-        <div class="prob-left">
-  <h3>Website MANAGEMENT</h3>
-  <p>Also had been in probession in Server development during internship at Denphlink Company.</p></div></div></div>
-</div></div> 
-<div id="gallary" style="gap:20px;align-items: center;">
-  <h3 style="color:#f0f6f2"><b>//ARCHIVE DATA</b></h3>
-  <img src="wongel1.jpg" alt="Wongel Sherpa" width="450" height="300">
-  <img src="wongel.jpeg" alt="ctf program"width="450" height="300">
-  <img src="wongel2.jpg" alt="ctf program"width="850">
-  <img src="wongel3.jpg" alt="ctf program"width="850">
-  
-  
-</div>
-<div id="contact">
-  <div class="div-inner">
-    <div class="d-label"><h3><b>GET IN TOUCH</b></h3></div>
-    <div class="contact-grid fade-in">
-      <div class="contact-text">
-        <h2 class="d-title" style="margin-bottom:1.25rem">Let's work<br>together.</h2>
-        <p>Looking for a penetration tester, security auditor, or someone to run a vulnerability assessment? I'm available for freelance engagements, bug bounty collaboration, and full-time roles.</p>
-        <p>All work is conducted within defined legal scope and comes with a full written report.</p>
-        <div class="contact-info">
-          <div class="contact-row"><span class="c-key">email</span><span class="c-val">wongsherap56@gmail.com</span></div>
-          <div class="contact-row"><span class="c-key">location</span><span class="c-val">remote / worldwide</span></div>
-          <div class="contact-row"><span class="c-key">linkedin</span><span class="c-val">/in/Wongel sherpa</span></div>
-          <div class="contact-row"><span class="c-key">github</span><span class="c-val">github.com/WONGEL SHERPA</span></div>
+        <div class="prob-card fade-in">
+          <div class="prob-left">
+            <h3>SERVER MANAGEMENT</h3>
+            <p> Had helped Server development during internship at Rural Reconstruction Nepal.</p>
+          </div>
         </div>
       </div>
-      <div class="contact-form">
-        <div class="form-group">
-          <label>name</label>
-          <input type="text" placeholder="Your name"/>
+      <div class="prob-list">
+
+        <div class="prob-card fade-in">
+          <div class="prob-left">
+            <h3>Website MANAGEMENT</h3>
+            <p>Also had been in probession in Server development during internship at Denphlink Company.</p>
+          </div>
         </div>
-        <div class="form-group">
-          <label>email</label>
-          <input type="email" placeholder="your@email.com"/>
-        </div>
-        <div class="form-group">
-          <label>message</label>
-          <textarea placeholder="Describe your project or requirement..."></textarea>
-        </div>
-        <a class="btn btn-primary" href="mailto:wongsherap56@gmail.com" style="width:fit-content">Send Message →</a>
       </div>
     </div>
   </div>
-</div>
+  <div id="gallary" style="gap:20px;align-items: center;">
+    <h3 style="color:#f0f6f2"><b>//ARCHIVE DATA</b></h3>
+    <div class="gallery-middile">
+      <img src="img1.jpeg" alt="Wongel Sherpa">
+      <img src="img2.jpeg" alt="ctf program">
+    </div>
+
+  </div>
+  <div id="contact">
+    <div class="div-inner">
+      <div class="d-label">
+        <h3><b>GET IN TOUCH</b></h3>
+      </div>
+      <div class="contact-grid fade-in">
+        <div class="contact-text">
+          <h2 class="d-title" style="margin-bottom:1.25rem">Let's work<br>together.</h2>
+          <p>Looking for a penetration tester, security auditor, or someone to run a vulnerability assessment? I'm
+            available for freelance engagements, bug bounty collaboration, and full-time roles.</p>
+          <p>All work is conducted within defined legal scope and comes with a full written report.</p>
+          <div class="contact-info">
+            <div class="contact-row"><span class="c-key">email</span><span class="c-val"><a href="wongsherap56@gmail.com">wongsherap56@gmail.com</a></span>
+            </div>
+            <div class="contact-row"><span class="c-key">location</span><span class="c-val">remote / worldwide</span>
+            </div>
+            <div class="contact-row"><span class="c-key">linkedin</span><span class="c-val">/in/Wongel sherpa</span>
+            </div>
+            <div class="contact-row"><span class="c-key">github</span><span class="c-val"><a href="https://github.com/12wongel" target="blank">github.com/WONGEL
+                SHERPA</a></span></div>
+            <div class="contact-row"><span class="c-key">facebook</span><span class="c-val">github.com/WONGEL
+                SHERPA</span></div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label>name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>email</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>message</label>
+            <textarea placeholder="Describe your project or requirement..."></textarea>
+          </div>
+          <a class="btn btn-primary" href="mailto:wongsherap56@gmail.com" style="width:fit-content">Send Message →</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-<footer>[ Wongel Sherpa · ceh · 2025 ] &nbsp;·&nbsp; all rights reserved &nbsp;·&nbsp;  <span style="color:var(--green)">ethical hacking and security</span></footer>
+  <footer>[ Wongel Sherpa · ceh · 2025 ] &nbsp;·&nbsp; all rights reserved &nbsp;·&nbsp; <span
+      style="color:var(--green)">ethical hacking and security</span></footer>
 
-<script>
+  <script>
 
-const tb = document.getElementById('terminal-body');
+    const tb = document.getElementById('terminal-body');
 
-const lines = [
-  { type:'cmd',  prompt:'Wongel@kali:~$', cmd:' whoami' },
-  { type:'out',  text:'Wongel Sherpa', cls:'green' },
-  { type:'cmd',  prompt:'Wongel@kali:~$', cmd:' cat certs.txt' },
-  { type:'out',  text:'[CEH v13]  Certified Ethical Hacker — EC-Council', cls:'' },
-  { type:'out',  text:'[SOC ANALYST ]     SOC L2 Analyst', cls:'' },
-  { type:'cmd',  prompt:'Wongel@kali:~$', cmd:' nmap --status' },
-  { type:'out',  text:'STATUS : Available for engagements', cls:'green' },
-  { type:'out',  text:'FOCUS  : Penetration Testing · Vulnerability Assessment · Red Team .AI ML', cls:'dim' },
-];
+    const lines = [
+      { type: 'cmd', prompt: 'Wongel@kali:~$', cmd: ' whoami' },
+      { type: 'out', text: 'Wongel Sherpa', cls: 'green' },
+      { type: 'cmd', prompt: 'Wongel@kali:~$', cmd: ' cat certs.txt' },
+      { type: 'out', text: '[CEH v13]  Certified Ethical Hacker — EC-Council', cls: '' },
+      { type: 'out', text: '[SOC ANALYST ]     SOC L2 Analyst', cls: '' },
+      { type: 'cmd', prompt: 'Wongel@kali:~$', cmd: ' nmap --status' },
+      { type: 'out', text: 'STATUS : Available for engagements', cls: 'green' },
+      { type: 'out', text: 'FOCUS  : Penetration Testing · Vulnerability Assessment · Red Team .AI ML', cls: 'dim' },
+    ];
 
-let li = 0;
-const cursor = document.createElement('div');
-cursor.className = 't-cursor-line';
-cursor.innerHTML = '<span class="t-prompt">Wongel@kali:~$</span><span class="t-cursor"></span>';
+    let li = 0;
+    const cursor = document.createElement('div');
+    cursor.className = 't-cursor-line';
+    cursor.innerHTML = '<span class="t-prompt">Wongel@kali:~$</span><span class="t-cursor"></span>';
 
-function renderLine(l, cb) {
-  if (l.type === 'cmd') {
-    const div = document.createElement('div');
-    div.className = 't-line';
-    div.innerHTML = `<span class="t-prompt">${l.prompt}</span><span class="t-cmd"></span>`;
-    tb.insertBefore(div, cursor);
-    const cmdEl = div.querySelector('.t-cmd');
-    let ci = 0;
-    const t = setInterval(() => {
-      cmdEl.textContent += l.cmd[ci++];
-      if (ci >= l.cmd.length) { clearInterval(t); setTimeout(cb, 300); }
-    }, 55);
-  } else {
-    const div = document.createElement('div');
-    div.className = `t-output ${l.cls}`;
-    div.textContent = l.text;
-    tb.insertBefore(div, cursor);
-    setTimeout(() => { div.classList.add('show'); setTimeout(cb, 120); }, 60);
-  }
-}
-
-function next() {
-  if (li >= lines.length) return;
-  renderLine(lines[li++], next);
-}
-
-tb.appendChild(cursor);
-setTimeout(next, 600);
-
-const fadeObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
-
-
-const barObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.skill-fill').forEach(fill => {
-        fill.style.width = fill.dataset.w + '%';
-      });
-      barObs.unobserve(e.target);
+    function renderLine(l, cb) {
+      if (l.type === 'cmd') {
+        const div = document.createElement('div');
+        div.className = 't-line';
+        div.innerHTML = `<span class="t-prompt">${l.prompt}</span><span class="t-cmd"></span>`;
+        tb.insertBefore(div, cursor);
+        const cmdEl = div.querySelector('.t-cmd');
+        let ci = 0;
+        const t = setInterval(() => {
+          cmdEl.textContent += l.cmd[ci++];
+          if (ci >= l.cmd.length) { clearInterval(t); setTimeout(cb, 300); }
+        }, 55);
+      } else {
+        const div = document.createElement('div');
+        div.className = `t-output ${l.cls}`;
+        div.textContent = l.text;
+        tb.insertBefore(div, cursor);
+        setTimeout(() => { div.classList.add('show'); setTimeout(cb, 120); }, 60);
+      }
     }
-  });
-}, { threshold: 0.2 });
-const skillSection = document.querySelector('.skills-cols');
-if (skillSection) barObs.observe(skillSection);
-</script>
+
+    function next() {
+      if (li >= lines.length) return;
+      renderLine(lines[li++], next);
+    }
+
+    tb.appendChild(cursor);
+    setTimeout(next, 600);
+
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+
+    const barObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.skill-fill').forEach(fill => {
+            fill.style.width = fill.dataset.w + '%';
+          });
+          barObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    const skillSection = document.querySelector('.skills-cols');
+    if (skillSection) barObs.observe(skillSection);
+  </script>
 </body>
 
-</html> 
+</html>
